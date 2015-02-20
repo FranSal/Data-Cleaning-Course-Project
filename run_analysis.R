@@ -4,9 +4,8 @@ library(tidyr)
 
 ##  This lines must be modified to customize your system: 
 ## changing to the base dir. where we have stored out raw data.
-setwd("Data-Cleaning-Course-Project/raw_data")
 
-## defining  raw data  directories and files  ( subdirectories branching from the base dir )
+
 ## Plase note that this has been done on a Mac. For windows you have to substitute the slash(/) with the back-slash(\)
 testdir <- "./test"
 traindir <- "./train"
@@ -86,4 +85,10 @@ averages_set <- my_dataset %>%
 
 # now the final step is to write the final table into a cvs format. I choose to write it om the base dir ("Data-Cleaning-Course-Project/raw_data")
 write.csv(averages_set, "averages_set.csv")
+
+book_names <- as.data.frame(names(averages_set))
+
+#wrinting the variables for the codebook.
+write.table(book_names, "codebook.txt", sep = " ", col.names = FALSE, row.names= FALSE,  quote = FALSE )
+
 
