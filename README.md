@@ -21,9 +21,13 @@
 
 The files included are:
 README.md:          this file
+
 run_analysis.R:     R script to automate all analysis starting from the de-zipped files 
+
 averages_set.csv:   The final result of running run_analysis.R
+
 codebook.txt:        file that describes the variables of codebook.txt
+
 
 
 
