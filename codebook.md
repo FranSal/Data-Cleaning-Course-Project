@@ -33,7 +33,8 @@ The files included are:
 
 When choosing wich of the data columns to get into my sub-set, upon inspection of the original documentation, I decided that the mean and std variables asked for this exercise were exclusively referring to those that included  "mean()" and "std()". 
 Other of variables described in the features.txt  containing "meanFrec"  as well as others containing gravityMean were discarded; although it can be easily included by changing  just a pice of the code.
-to extract the columns of interest I used : 
+
+To extract the columns of interest I used : 
     features <- tbl_df(tmp[ grepl("mean()",tmp$V2) | grepl("std()",tmp$V2),]) 
 if we wanted to extract the missing columns this line of code shall be changed to:
     features <- tbl_df(tmp[ grepl("mean",tmp$V2) | grepl("std()",tmp$V2),]) 

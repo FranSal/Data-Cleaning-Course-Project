@@ -4,7 +4,7 @@ library(tidyr)
 
 ##  This lines must be modified to customize your system: 
 ## changing to the base dir. where we have stored out raw data.
-
+ 
 
 ## Plase note that this has been done on a Mac. For windows you have to substitute the slash(/) with the back-slash(\)
 testdir <- "./test"
@@ -47,7 +47,6 @@ ytrain <- tbl_df(y_train)
 ytest <- tbl_df(y_test)
 subjtrain <- tbl_df(subj_train)
 subjtest <- tbl_df(subj_test)
-
 
 ## merging all X, y and subject data  in a single dataframe of the same kind
 total_x <-bind_rows(xtrain,xtest)
