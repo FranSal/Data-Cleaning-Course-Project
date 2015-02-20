@@ -27,7 +27,7 @@ The files included are:
 
       averages_set.csv:   The final result of running run_analysis.R
 
-      codebook.txt:        file that describes the variables of codebook.txt
+      codebook.txt:        file that describes the variables and structure of averages_set.csv
 
 
 
