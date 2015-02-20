@@ -86,7 +86,7 @@ since we haver 30 subjects and 6 activities there is a total of 180 rows, by 81 
 13.- write the averages_set dataset into a csv file ( good viualization in the gitHub)
 15.- write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
 
-
+ 
 14.- write the final names if the averages data set to a text file, for the code book( see below)
 
 
