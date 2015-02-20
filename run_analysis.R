@@ -2,11 +2,16 @@
 library(dplyr)
 library(tidyr)
 
+##  This lines must be modified to customize your system: 
+## changing to the base dir. where we have stored out raw data.
 setwd("Data-Cleaning-Course-Project/raw_data")
 
-## defining  raw data  directories and files  
+## defining  raw data  directories and files  ( subdirectories branching from the base dir )
+## Plase note that this has been done on a Mac. For windows you have to substitute the slash(/) with the back-slash(\)
 testdir <- "./test"
 traindir <- "./train"
+
+## Test file names from the original zip package
 testxfile <- "X_test.txt"
 trainxfile <- "X_train.txt"
 testyfile <- "y_test.txt"
@@ -14,16 +19,16 @@ trainyfile <- "y_train.txt"
 subjTr <- "subject_train.txt"
 subjTs <- "subject_test.txt"
 
-## reading train set 
+## reading train set . First we paste the fie dir wirh the name of the file
 path1 <- paste(traindir,"/",trainxfile, sep="")
 raw_train <- read.fwf(path1, widths =rep(16,561), header = FALSE,   numerals = "no.loss", n = -1) # reads fixed width X_train.txt file
 
-
+# now it reads Y_train.txt after setting its path to path12 using read.fwf() seting its widths to 1 and header =FALSE
+# same idea for reading subject_train.txt but setting the width = 2 because we have up to 30 subject id's, (from 1 to 30).
 path12 <- paste(traindir,"/",trainyfile, sep="") 
-y_train <- read.fwf(path12, widths =1, header = FALSE) # reads Y_train.txt after setting its path to path12 using read.fwf() seting its widths to 1 and header =FALSE
-# same idea for reading subject-train.txt
+y_train <- read.fwf(path12, widths =1, header = FALSE) 
 path13 <- paste(traindir,"/",subjTr, sep="")
-subj_train <- read.fwf(path13, widths =1, header = FALSE)
+subj_train <- read.fwf(path13, widths =2, header = FALSE)
 
 ## reading test set
 path2 <- paste(testdir,"/", testxfile, sep="")
@@ -31,9 +36,9 @@ raw_test <- read.fwf(path2, widths =rep(16,561), header = FALSE,   numerals = "n
 # reads Y_test.txt
 path22 <- paste(testdir,"/",testyfile, sep="")
 y_test <- read.fwf(path22, widths =1, header = FALSE)
-# reading subject-test.txt
+# reading subject_test.txt
 path23 <- paste(testdir,"/",subjTs, sep="")
-subj_test <- read.fwf(path23, widths =1, header = FALSE)
+subj_test <- read.fwf(path23, widths =2, header = FALSE)
 
 ## transforming all  to tbl_df format
 xtrain <- tbl_df(raw_train)
@@ -70,18 +75,13 @@ my_total_y <- total_y %>%
 
 # finally merging together the three data sets, putting "subject" and activity in the fists two columns.
 my_dataset <- tbl_df(bind_cols(total_subj, my_total_y, my_total_x ))
-
-## Now that we have a tidy data set we will re-arrange it by subject and activity.
-my_dataset %>%  
-    group_by(subject)  # grouping the set by subject and activity.
     
     
 ## Now we'll create a separate data set with the average of each variable by subject and activity
-second_set <- my_dataset %>%  summarise_each(funs(mean), -subject, -activity)
-    
- 
-    
+averages_set <- my_dataset %>%  
+            group_by(subject, activity) %>%
+            summarise_each(funs(mean))
 
-
-
+# now the final step is to write the final table into a cvs format.
+write.csv(averages_set, "averages_set.csv")
 
