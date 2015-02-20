@@ -90,4 +90,5 @@ book_names <- as.data.frame(names(averages_set))
 #wrinting the variables for the codebook.
 write.table(book_names, "codebook.txt", sep = " ", col.names = FALSE, row.names= FALSE,  quote = FALSE )
 
+write.table(averages_set,"averages_set.txt", row.name=FALSE)
 
