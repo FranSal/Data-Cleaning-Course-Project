@@ -82,6 +82,6 @@ averages_set <- my_dataset %>%
             group_by(subject, activity) %>%
             summarise_each(funs(mean))
 
-# now the final step is to write the final table into a cvs format.
+# now the final step is to write the final table into a cvs format. I choose to write it om the base dir ("Data-Cleaning-Course-Project/raw_data")
 write.csv(averages_set, "averages_set.csv")
 
