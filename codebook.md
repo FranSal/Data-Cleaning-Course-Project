@@ -40,7 +40,7 @@ Other of variables described in the features.txt  containing "meanFrec"  as well
 
 To extract the columns of interest I used : 
 
-   features <- tbl_df(tmp[ grepl("mean()",tmp$V2) | grepl("std()",tmp$V2),]) 
+     features <- tbl_df(tmp[ grepl("mean()",tmp$V2) | grepl("std()",tmp$V2),]) 
    
 if we wanted to extract the missing columns this line of code shall be changed to:
 
@@ -82,7 +82,7 @@ running the run_analisys.R script:
                 select(activity) # here we get rid of the the old V1 col we inherited from the original total_y
 
 11.- blend the three sets ( my_total_x, my_total_y, total_subj) into a new set with subject and activity as the 1st and 2nd columns.
-                my_dataset <- tbl_df(bind_cols(total_subj, my_total_y, my_total_x ))
+             my_dataset <- tbl_df(bind_cols(total_subj, my_total_y, my_total_x ))
 
 This new set (my_dataset) holds 79  extracted variables + 2 new ones ("subject" and "activity") for a total of 81 variables, 
 so this set has 10299 observations and 81 variables.
