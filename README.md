@@ -23,15 +23,15 @@
    for each activity and each subject.
 
 
-The files included are:
+The files included here are:
 
       README.md:          a concise info of this project
 
       run_analysis.R:     R script to automate all analysis starting from the de-zipped files 
 
-      averages_set.csv:   The final result of running run_analysis.R
+      averages_set.csv:   The final result of running run_analysis.R in an easy looking format.
       
-      averages_set.txt    same as the csv file but it's the in the format asked by the project instructions
+      averages_set.txt    Same  info as in the csv file but it's in the format asked by the project instructions
 
       codebook.txt:       this file that describes the transformations and variables of this data. 
 
@@ -96,13 +96,8 @@ so this set has 10299 observations and 81 variables.
 
 This new averages_set holds the average of every variable of our modified set, by activity and subject.
 since there are 30 subjects and 6 activities there is a total of 180 rows, by 81 columns.
-The units:
 
-All the original observations in the x observsation set, as stated in their book notes, were normalized and bounded within [-1,1] the averaged values in the averages_set share the bounded condition.
-
-The numeric value of the activity on the original set has been substitued by a descriptive string.
-The "subject" variable range from 1 to 30.
 
 13.- Write the averages_set dataset into a csv file ( good viualization )
 
-15.- Write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
+14.- Write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
