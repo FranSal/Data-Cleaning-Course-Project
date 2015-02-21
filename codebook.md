@@ -100,8 +100,7 @@ since we haver 30 subjects and 6 activities there is a total of 180 rows, by 81 
 
 15.- Write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
 
-14.- Write the final names if the averages data set to a text file, for the code book( see below)
-
+---------------------------------------------------------------------------------------------------------------------------
 
 VARIABLES present in the final table.( all variables are the mean value for each activity, and subject.)
 
