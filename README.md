@@ -48,6 +48,7 @@ if we wanted to extract the missing columns this line of code shall be changed t
      features <- tbl_df(tmp[ grepl("mean",tmp$V2) | grepl("std()",tmp$V2),]) 
 
 The stages of transformation were:
+
 1.- Download and unzip the files in a directory pendinf from our main working directory, 
 
 running the run_analisys.R script:
