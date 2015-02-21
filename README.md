@@ -26,6 +26,8 @@ The files included are:
       run_analysis.R:     R script to automate all analysis starting from the de-zipped files 
 
       averages_set.csv:   The final result of running run_analysis.R
+      
+      averages_set.txt     The final result as asked by the project instructions.
 
       codebook.txt:        file that describes the variables and structure of averages_set.csv
 
