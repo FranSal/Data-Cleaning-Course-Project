@@ -98,7 +98,11 @@ so this set has 10299 observations and 81 variables.
 This new averages_set holds the average of every variable of our modified set, by activity and subject.
 since we haver 30 subjects and 6 activities there is a total of 180 rows, by 81 columns.
 The units:
-All the original observations, as stated in their book notes, were normalized and bounded within [-1,1] the averaged values in the averages_set share the bounded condition in the mean() measures.
+
+All the original observations in the x observsation set, as stated in their book notes, were normalized and bounded within [-1,1] the averaged values in the averages_set share the bounded condition.
+
+The numeric value of the activity on the original set has been substitued by a descriptive string.
+Subject variable range from 1 to 30.
 
 13.- Write the averages_set dataset into a csv file ( good viualization )
 
