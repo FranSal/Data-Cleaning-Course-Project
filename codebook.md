@@ -96,7 +96,7 @@ so this set has 10299 observations and 81 variables.
                                     summarise_each(funs(mean))
 
 This new averages_set holds the average of every variable of our modified set, by activity and subject.
-since we haver 30 subjects and 6 activities there is a total of 180 rows, by 81 columns.
+since there are 30 subjects and 6 activities there is a total of 180 rows, by 81 columns.
 The units:
 
 All the original observations in the x observsation set, as stated in their book notes, were normalized and bounded within [-1,1] the averaged values in the averages_set share the bounded condition.
@@ -111,6 +111,7 @@ Subject variable range from 1 to 30.
 ---------------------------------------------------------------------------------------------------------------------------
 
 VARIABLES present in the final table.( all variables are the mean value for each activity, and subject.)
+ The averaged variables are presented as  a real number in a fixed width format.
 
 subject
 
