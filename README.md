@@ -49,7 +49,7 @@ if we wanted to extract the missing columns this line of code shall be changed t
 
 The stages of transformation were:
 
-1.- Download and unzip the files in a directory pendinf from our main working directory, 
+1.- Download and unzip the files in a directory branching from our main working directory, 
 
 running the run_analisys.R script:
 
