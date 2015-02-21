@@ -24,7 +24,7 @@
    for each activity and each subject.
 
 
-The files included are:
+Files included:
 
       README.md:          a concise info of this project
 
@@ -48,52 +48,10 @@ if we wanted to extract the missing columns this line of code shall be changed t
 
      features <- tbl_df(tmp[ grepl("mean",tmp$V2) | grepl("std()",tmp$V2),]) 
 
-The stages of transformation were:
-1.- Download and unzip the files in a directory pendinf from our main working directory, 
 
-running the run_analisys.R script:
+---------------------------------------------------------------------------------------------------------------------------
 
-2.- Define path and file variables 
-
-3.- Read them using read.fwf (  since they are fixed width format compatible files. This is a bit slow, but works flawlesly)
-
-4.- Transform all sets to tbl_df format
-
-5.- Merge using bind.rows() ( on each x, y and subject sets) from  train and test sets.
-
-6.- Change the name of the V1 variable from the subject set to "subject" using names()
-
-7.- Read the features table and sub-set  the interested features using the code( as above):
-
-            features <- tbl_df(tmp[ grepl("mean()",tmp$V2) | grepl("std()",tmp$V2),]) 
-            
-                that passes only those rows with  the presence of a sub-string of charecters in the V2 column.
-
-8.- Create a subset( my_total_x) of the  merged x_set ( total_x) using:
-
-            select(total_x, features$V1), where feature$V1 is the list of wanted columns
-
-9 .-Change the column names to represent the chosen features using:
-
-            setNames(my_total_x, features$V2) where features$V2 is the list of names to overwrite the standard V1, V2....Vn
-    
-10.- Read the activities.txt file and create my_total_y  using a mutate and transform formula to substitute the numeric code and insert a meaningful activity:
-
-             my_total_y <- total_y %>% 
-                mutate( activity = activities$V2[total_y$V1]) %>% # here we are adding a new column named "activity"
-                select(activity) # here we get rid of the the old V1 col we inherited from the original total_y
-
-11.- Blend the three sets ( my_total_x, my_total_y, total_subj) into a new set with subject and activity as the 1st and 2nd columns.
-             my_dataset <- tbl_df(bind_cols(total_subj, my_total_y, my_total_x ))
-
-This new set (my_dataset) holds 79  extracted variables + 2 new ones ("subject" and "activity") for a total of 81 variables, 
-so this set has 10299 observations and 81 variables.
-
-12.-Create a new averages set using group_by and summarise_each in cascade:
-
-                averages_set <- my_dataset %>%  
-                                    group_by(subject, activity) %>%
-                                    summarise_each(funs(mean))
+VARIABLES present in the final averages_set table.
 
 This new averages_set holds the average of every variable of our modified set, by activity and subject.
 since there are 30 subjects and 6 activities there is a total of 180 rows, by 81 columns.
@@ -104,18 +62,22 @@ All the original observations in the x observsation set, as stated in their book
 The numeric value of the activity on the original set has been substitued by a descriptive string.
 The "subject" variable range from 1 to 30.
 
-13.- Write the averages_set dataset into a csv file ( good viualization )
+Please refer to the README.md file for an in-depth description of the steps taken from the original data set to the final averages_set.txt ( averages-csv)
+ 
 
-15.- Write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
+subject: 1-30 - The subjects of the experiment.
 
----------------------------------------------------------------------------------------------------------------------------
+activity  
+      The six original activities are:
+      WALKING
+      WALKING_UPSTAIRS
+      WALKING_DOWNSTAIRS
+      SITTING
+      STANDING
+      LAYING
 
-VARIABLES present in the final table.( all variables are the mean value for each activity, and subject.)
- The averaged variables are presented as  a real number in a fixed width format.
-
-subject
-
-activity
+The  following are averaged variables are presented as  a real number in a fixed width format.
+Its value represent the average value on ech activity for each subjet.
 
 tBodyAcc-mean()-X
 
