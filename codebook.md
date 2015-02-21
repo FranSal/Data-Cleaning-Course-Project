@@ -47,27 +47,27 @@ if we wanted to extract the missing columns this line of code shall be changed t
      features <- tbl_df(tmp[ grepl("mean",tmp$V2) | grepl("std()",tmp$V2),]) 
 
 The stages of transformation were:
-1.- download and unzip the files in a directory pendinf from our main working directory, 
+1.- Download and unzip the files in a directory pendinf from our main working directory, 
 
 running the run_analisys.R script:
 
-2.- define path and file variables 
+2.- Define path and file variables 
 
-3.- read them using read.fwf (  since they are fixed width format compatible files. This is a bit slow, but works flawlesly)
+3.- Read them using read.fwf (  since they are fixed width format compatible files. This is a bit slow, but works flawlesly)
 
-4.- transform all sets to tbl_df format
+4.- Transform all sets to tbl_df format
 
-5.- merge using bind.rows() ( on each x, y and subject sets) from  train and test sets.
+5.- Merge using bind.rows() ( on each x, y and subject sets) from  train and test sets.
 
-6.- change the name of the V1 variable from the subject set to "subject" using names()
+6.- Change the name of the V1 variable from the subject set to "subject" using names()
 
-7.- read the features table and sub-set  the interested features using the code( as above):
+7.- Read the features table and sub-set  the interested features using the code( as above):
 
             features <- tbl_df(tmp[ grepl("mean()",tmp$V2) | grepl("std()",tmp$V2),]) 
             
                 that passes only those rows with  the presence of a sub-string of charecters in the V2 column.
 
-8.- create a subset( my_total_x) of the  merged x_set ( total_x) using:
+8.- Create a subset( my_total_x) of the  merged x_set ( total_x) using:
 
             select(total_x, features$V1), where feature$V1 is the list of wanted columns
 
@@ -75,13 +75,13 @@ running the run_analisys.R script:
 
             setNames(my_total_x, features$V2) where features$V2 is the list of names to overwrite the standard V1, V2....Vn
     
-10.- read the activities.txt file and create my_total_y  using a mutate and transform formula to substitute the numeric code and insert a meaningful activity:
+10.- Read the activities.txt file and create my_total_y  using a mutate and transform formula to substitute the numeric code and insert a meaningful activity:
 
              my_total_y <- total_y %>% 
                 mutate( activity = activities$V2[total_y$V1]) %>% # here we are adding a new column named "activity"
                 select(activity) # here we get rid of the the old V1 col we inherited from the original total_y
 
-11.- blend the three sets ( my_total_x, my_total_y, total_subj) into a new set with subject and activity as the 1st and 2nd columns.
+11.- Blend the three sets ( my_total_x, my_total_y, total_subj) into a new set with subject and activity as the 1st and 2nd columns.
              my_dataset <- tbl_df(bind_cols(total_subj, my_total_y, my_total_x ))
 
 This new set (my_dataset) holds 79  extracted variables + 2 new ones ("subject" and "activity") for a total of 81 variables, 
@@ -96,12 +96,11 @@ so this set has 10299 observations and 81 variables.
 This new averages_set holds the average of every variable of our modified set, by activity and subject.
 since we haver 30 subjects and 6 activities there is a total of 180 rows, by 81 columns.
 
-13.- write the averages_set dataset into a csv file ( good viualization in the gitHub)
+13.- Write the averages_set dataset into a csv file ( good viualization )
 
-15.- write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
+15.- Write the averages_set into a txt file (same as 13.- but as txt, as demanded by the course)
 
- 
-14.- write the final names if the averages data set to a text file, for the code book( see below)
+14.- Write the final names if the averages data set to a text file, for the code book( see below)
 
 
 VARIABLES present in the final table.( all variables are the mean value for each activity, and subject.)
