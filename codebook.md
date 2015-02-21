@@ -102,7 +102,7 @@ The units:
 All the original observations in the x observsation set, as stated in their book notes, were normalized and bounded within [-1,1] the averaged values in the averages_set share the bounded condition.
 
 The numeric value of the activity on the original set has been substitued by a descriptive string.
-Subject variable range from 1 to 30.
+The "subject" variable range from 1 to 30.
 
 13.- Write the averages_set dataset into a csv file ( good viualization )
 
