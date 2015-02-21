@@ -31,6 +31,6 @@ The files included are:
 
       codebook.txt:        file that describes the variables and structure of averages_set.csv
 
-
+Please, refer to the CodeBook.md for the in-depth description of the steps followed to get this averages_set.
 
 
